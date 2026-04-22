@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exercices pratiques Word — Session 2 — Vitalait × KaTEK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --primary: #0d5c63;
+      --primary-light: #e6f3f4;
+      --accent: #c45c26;
+      --accent-soft: #fdf4ef;
+      --text: #1a2332;
+      --muted: #5c6b7a;
+      --radius: 16px;
+      --shadow: 0 12px 40px rgba(13, 92, 99, 0.12);
+      --font: "DM Sans", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font);
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(13, 92, 99, 0.14), transparent),
+        radial-gradient(900px 500px at 100% 0%, rgba(196, 92, 38, 0.1), transparent),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .app {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3rem;
+    }
+
+    header.brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .brand-logos {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-logos img {
+      max-height: 48px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-logos .logo-fallback {
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding: 0.35rem 0.6rem;
+      background: var(--surface);
+      border-radius: 8px;
+      border: 1px dashed #cfd8dc;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.75rem 1.5rem;
+      border: 1px solid rgba(13, 92, 99, 0.08);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin: 0 0 0.35rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0 0 0.75rem;
+      color: var(--primary);
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0 0 1rem;
+    }
+
+    .notice {
+      background: var(--primary-light);
+      border: 1px solid rgba(13, 92, 99, 0.2);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .notice strong { color: var(--primary); }
+
+    /* Aperçu type page Word */
+    .doc-frame {
+      margin: 1rem 0;
+      padding: 0.5rem;
+      background: #e8ecf0;
+      border-radius: 12px;
+      overflow-x: auto;
+    }
+
+    .doc-page {
+      background: #fff;
+      min-height: 280px;
+      padding: 1.75rem 1.5rem 2rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #d0d7de;
+      font-family: Calibri, "Segoe UI", "Arial", sans-serif;
+      color: #222;
+      max-width: 100%;
+    }
+
+    .doc-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 0 0 0.35rem;
+      letter-spacing: 0.02em;
+    }
+
+    .doc-subtitle {
+      font-size: 1rem;
+      font-style: italic;
+      text-align: center;
+      color: #444;
+      margin: 0 0 1.25rem;
+    }
+
+    .doc-body {
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .doc-body .sz-large { font-size: 1.15rem; }
+    .doc-body .sz-small { font-size: 0.8rem; }
+    .doc-body b { font-weight: 700; }
+    .doc-body i { font-style: italic; }
+    .doc-body u { text-decoration: underline; }
+    .doc-body .hl {
+      background: #fff59d;
+      padding: 0 2px;
+    }
+
+    .doc-table-wrap {
+      margin: 1rem 0;
+      font-size: 0.88rem;
+    }
+
+    .doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #333;
+    }
+
+    .doc-table th,
+    .doc-table td {
+      border: 1px solid #333;
+      padding: 0.4rem 0.6rem;
+      text-align: left;
+    }
+
+    .doc-table th {
+      background: #f0f4f8;
+      font-weight: 700;
+    }
+
+    .doc-image-placeholder {
+      margin: 1rem 0;
+      padding: 1rem;
+      border: 2px dashed #90a4ae;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #546e7a;
+      background: #fafafa;
+    }
+
+    .checklist {
+      margin: 0.75rem 0 0;
+      padding-left: 1.2rem;
+    }
+
+    .checklist li { margin-bottom: 0.4rem; }
+
+    .numbered {
+      margin: 0.5rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    .numbered li { margin-bottom: 0.65rem; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.35rem;
+      font: inherit;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      text-decoration: none;
+    }
+
+    .btn:active { transform: scale(0.98); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #0a4a50);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(13, 92, 99, 0.35);
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary:hover { box-shadow: 0 6px 20px rgba(13, 92, 99, 0.4); }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      width: 100%;
+      margin-top: 0.75rem;
+    }
+
+    footer.note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 1.5rem;
+    }
+
+    .centre-tag {
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin: -0.35rem 0 1.35rem;
+      letter-spacing: 0.03em;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+
+    @media (min-width: 600px) {
+      .card { padding: 2rem; }
+      h1 { font-size: 1.65rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="brand">
+      <div class="brand-logos" id="brandLogos">
+        <img src="logos/Logo_Vitalait.png" alt="Vitalait" />
+        <img src="logos/Logo_Katek1.jpg" alt="KaTEK" />
+      </div>
+      <span class="badge">Microsoft Word — Session 2</span>
+    </header>
+    <p class="centre-tag">Centre de formation À la une</p>
+
+    <section class="card">
+      <h1>Exercices pratiques dans Word</h1>
+      <p class="subtitle">
+        Ouvrez <strong>Microsoft Word</strong>, créez un <strong>nouveau document vide</strong>, puis suivez les consignes ci-dessous.
+        Ces exercices ne sont <strong>pas notés</strong> et ne changent pas le résultat du quiz en ligne : ils servent à manipuler le logiciel.
+      </p>
+      <p class="subtitle" style="margin-top: 0.75rem; margin-bottom: 0">
+        <strong>Centre de formation À la une</strong> — <strong>Formateur :</strong> Kabil Mbarki (KaTEK).
+      </p>
+      <div class="notice">
+        <strong>Pour le formateur :</strong> la partie A peut être vérifiée en comparant avec l’aperçu ci-dessous.
+        La partie B est corrigée manuellement selon vos critères.
+      </div>
+      <a href="index.html" class="btn btn-secondary">← Retour au quiz en ligne</a>
+    </section>
+
+    <section class="card">
+      <span class="section-label">Partie A — Avec modèle (à reproduire)</span>
+      <h2>Reproduire la mise en forme suivante</h2>
+      <p class="subtitle" style="margin-bottom: 0.75rem">
+        L’image ci-dessous imite un document Word. Réalisez le <strong>même rendu</strong> dans Word (titres, sous-titre, texte, tableau, image, couleurs de mise en forme).
+      </p>
+
+      <div class="doc-frame">
+        <div class="doc-page" aria-label="Aperçu du document à reproduire">
+          <p class="doc-title">Rapport de formation — Qualité</p>
+          <p class="doc-subtitle">Équipe Vitalait • Session Word</p>
+          <div class="doc-body">
+            Ce paragraphe est en taille normale. <b>Cette partie est en gras.</b>
+            <i> Cette partie est en italique.</i>
+            <u> Cette partie est soulignée.</u>
+            <span class="hl"> Cette phrase est surlignée en jaune</span> (outil Surlignage de texte).
+            <span class="sz-large"> Ce segment est en plus grande taille.</span>
+            <span class="sz-small"> Celui-ci est en plus petite taille.</span>
+          </div>
+          <div class="doc-table-wrap">
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>Outil</th>
+                  <th>Usage</th>
+                  <th>Onglet principal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Tableau</td>
+                  <td>Présenter des infos en lignes / colonnes</td>
+                  <td>Insertion</td>
+                </tr>
+                <tr>
+                  <td>Image</td>
+                  <td>Illustrer le document</td>
+                  <td>Insertion</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="doc-image-placeholder">
+            Zone image — insérez une image (logo, photo ou icône) depuis votre PC,<br />
+            largeur raisonnable (~4 à 6 cm), alignée sous le tableau.
+          </div>
+        </div>
+      </div>
+
+      <p class="subtitle" style="margin: 0.5rem 0 0.25rem"><strong>Check-list (à cocher pour vous-même)</strong></p>
+      <ul class="checklist">
+        <li>Titre principal centré, en gras, taille nettement plus grande que le corps du texte.</li>
+        <li>Sous-titre centré, en italique, sous le titre.</li>
+        <li>Un même paragraphe contient : gras, italique, souligné, surlignage, au moins deux tailles différentes.</li>
+        <li>Tableau 3 colonnes × 3 lignes (1 ligne d’en-tête + 2 lignes de données), bordures visibles, en-têtes distincts.</li>
+        <li>Au moins une image insérée sous le tableau (Insertion → Images).</li>
+        <li>Enregistrez le fichier au format <strong>.docx</strong> avec un nom clair (ex. <em>Exercice_Modele_VotreNom</em>).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <span class="section-label">Partie B — Sans modèle (consignes seules)</span>
+      <h2>À réaliser sans exemple à l’écran</h2>
+      <p class="subtitle">
+        Même principe : nouveau document Word. Ici, seules les consignes comptent — le rendu exact est libre tant que les exigences sont respectées.
+        <strong>Correction par le formateur.</strong>
+      </p>
+      <ol class="numbered">
+        <li>Rédigez un <strong>titre</strong> de votre choix (thème : formation ou entreprise), puis un <strong>sous-titre</strong> descriptif sur la ligne suivante (styles ou mise en forme manuelle).</li>
+        <li>Écrivez un court paragraphe de 3 à 4 phrases sur ce que vous avez retenu de la session Word ; appliquez <strong>gras</strong> aux mots importants et <strong>italique</strong> à une courte citation ou mise en avant.</li>
+        <li>Sur une nouvelle ligne, une phrase entière en <strong>souligné</strong> ; une autre phrase (ou portion) avec une <strong>taille de police différente</strong> du reste.</li>
+        <li>Utilisez le <strong>surlignage</strong> sur au moins trois mots consécutifs.</li>
+        <li>Insérez un <strong>tableau</strong> de 4 colonnes et 4 lignes : première ligne = en-têtes (ex. « Jour », « Thème », « Durée », « Remarque »), remplissez les autres cellules avec du texte fictif.</li>
+        <li>Insérez une <strong>image</strong> (fichier local ou illustration) entre deux paragraphes, avec une légende ou une phrase sous l’image si vous savez le faire.</li>
+        <li>Enregistrez sous <strong>.docx</strong> avec un nom du type <em>Exercice_Libre_VotreNom</em> et envoyez ou montrez le fichier au formateur selon les consignes du cours.</li>
+      </ol>
+    </section>
+
+    <a href="index.html" class="btn btn-primary">Retour au quiz en ligne</a>
+
+    <footer class="note">Centre de formation À la une — KaTEK × Vitalait — Exercices pratiques Word (hors notation) — Kabil Mbarki</footer>
+  </div>
+
+  <script>
+    (function () {
+      document.querySelectorAll(".brand-logos img").forEach(function (img) {
+        img.addEventListener("error", function () {
+          var fb = document.createElement("span");
+          fb.className = "logo-fallback";
+          fb.textContent = img.alt + " — fichier manquant dans /logos/";
+          img.replaceWith(fb);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

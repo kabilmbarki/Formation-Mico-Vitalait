@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formation Word — Session 2 — Quiz Vitalait × KaTEK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --primary: #0d5c63;
+      --primary-light: #e6f3f4;
+      --accent: #c45c26;
+      --accent-soft: #fdf4ef;
+      --text: #1a2332;
+      --muted: #5c6b7a;
+      --success: #1b7f4c;
+      --error: #c0392b;
+      --radius: 16px;
+      --shadow: 0 12px 40px rgba(13, 92, 99, 0.12);
+      --font: "DM Sans", system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font);
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(13, 92, 99, 0.14), transparent),
+        radial-gradient(900px 500px at 100% 0%, rgba(196, 92, 38, 0.1), transparent),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .app {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3rem;
+    }
+
+    header.brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .brand-logos {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-logos img {
+      max-height: 48px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-logos .logo-fallback {
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding: 0.35rem 0.6rem;
+      background: var(--surface);
+      border-radius: 8px;
+      border: 1px dashed #cfd8dc;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.75rem 1.5rem;
+      border: 1px solid rgba(13, 92, 99, 0.08);
+    }
+
+    h1 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin: 0 0 0.35rem;
+      color: var(--text);
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0 0 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.35rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font: inherit;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.35rem;
+      font: inherit;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #0a4a50);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(13, 92, 99, 0.35);
+      margin-top: 1.25rem;
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(13, 92, 99, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      margin-top: 0.75rem;
+      width: 100%;
+    }
+
+    a.btn {
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    .progress-wrap {
+      margin-bottom: 1rem;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #e8eef3;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), #2a9d8f);
+      border-radius: 999px;
+      transition: width 0.35s ease;
+    }
+
+    .progress-text {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+
+    .question-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0 0 1rem;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      border: 2px solid #e8eef3;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .option:hover {
+      border-color: #b8d4d8;
+      background: #fafcfd;
+    }
+
+    .option input {
+      margin-top: 0.2rem;
+      accent-color: var(--primary);
+    }
+
+    .option.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .exercise-box {
+      background: var(--accent-soft);
+      border: 1px solid rgba(196, 92, 38, 0.25);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .exercise-box strong {
+      color: var(--accent);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .results-hero {
+      text-align: center;
+      padding: 0.5rem 0 1rem;
+    }
+
+    .score-circle {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      background: conic-gradient(var(--primary) calc(var(--pct) * 1%), #e8eef3 0);
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .score-circle::after {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      background: var(--surface);
+      border-radius: 50%;
+    }
+
+    .score-value {
+      position: relative;
+      z-index: 1;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .congrats-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0.5rem 0;
+    }
+
+    .detail-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+
+    .detail-item {
+      border: 1px solid #e8eef3;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .detail-item.ok {
+      border-left: 4px solid var(--success);
+    }
+
+    .detail-item.bad {
+      border-left: 4px solid var(--error);
+    }
+
+    .detail-item .q {
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .correction {
+      color: var(--muted);
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px dashed #e2e8f0;
+    }
+
+    footer.note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 2rem;
+    }
+
+    .centre-tag {
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin: -0.35rem 0 1.35rem;
+      letter-spacing: 0.03em;
+    }
+
+    @media (min-width: 600px) {
+      .card {
+        padding: 2rem 2rem;
+      }
+      h1 {
+        font-size: 1.65rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="brand">
+      <div class="brand-logos" id="brandLogos">
+        <img src="logos/Logo_Vitalait.png" alt="Vitalait" data-org="vitalait" />
+        <img src="logos/Logo_Katek1.jpg" alt="KaTEK" data-org="katek" />
+      </div>
+      <span class="badge">Microsoft Word — Session 2</span>
+    </header>
+    <p class="centre-tag">Centre de formation À la une</p>
+
+    <!-- Écran d'accueil -->
+    <section class="card" id="screenWelcome">
+      <h1>Quiz — Introduction à Word</h1>
+      <p class="subtitle">
+        Quelques questions et mini-exercices pour valider les notions vues ensemble.
+        Temps indicatif : 8 à 12 minutes.
+      </p>
+      <label for="userName">Votre prénom et nom</label>
+      <input type="text" id="userName" placeholder="Tapez votre nom" autocomplete="name" />
+      <button type="button" class="btn btn-primary" id="btnStart">Commencer le test</button>
+      <p class="subtitle" style="margin-top: 1rem; font-size: 0.85rem;">
+        <strong>Centre de formation À la une</strong> — formation assurée par <strong>Kabil Mbarki</strong> (KaTEK) pour l’équipe <strong>Vitalait</strong>.
+      </p>
+    </section>
+
+    <!-- Questions -->
+    <section class="card hidden" id="screenQuiz">
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+        <div class="progress-text" id="progressText"></div>
+      </div>
+      <div id="questionContainer"></div>
+      <button type="button" class="btn btn-primary" id="btnNext">Question suivante</button>
+    </section>
+
+    <!-- Résultats -->
+    <section class="card hidden" id="screenResults">
+      <div class="results-hero">
+        <div class="score-circle" id="scoreCircle" style="--pct: 0">
+          <span class="score-value" id="scoreValue">0%</span>
+        </div>
+        <p class="subtitle" style="margin: 0">Votre résultat</p>
+        <p class="congrats-name" id="congratsLine"></p>
+        <p id="scoreSummary" class="subtitle"></p>
+      </div>
+      <h2 style="font-size: 1rem; margin: 0 0 0.5rem">Corrigé détaillé</h2>
+      <ul class="detail-list" id="detailList"></ul>
+      <p class="subtitle" style="margin-top: 1.25rem; margin-bottom: 0">
+        Les exercices suivants se font dans <strong>Word</strong> sur votre ordinateur : ils ne sont <strong>pas inclus dans la note</strong> du quiz.
+      </p>
+      <a href="exercices-pratiques.html" class="btn btn-primary" id="btnPractical">Passer aux exercices pratiques (Word)</a>
+      <button type="button" class="btn btn-secondary" id="btnRestart">Recommencer le quiz</button>
+    </section>
+
+    <footer class="note">Centre de formation À la une — KaTEK × Vitalait — Word (niveau introduction) — Kabil Mbarki</footer>
+  </div>
+
+  <script>
+    (function () {
+      var questions = [
+        {
+          type: "mcq",
+          question: "À quoi sert principalement Microsoft Word ?",
+          options: [
+            "Créer et mettre en forme des documents texte",
+            "Créer des tableaux de calcul et des graphiques",
+            "Créer des diapositives pour une présentation",
+            "Gérer des e-mails et un calendrier"
+          ],
+          correct: 0,
+          correction:
+            "Word est un traitement de texte : rédaction, mise en page et mise en forme de documents. Excel sert au calcul ; PowerPoint aux présentations."
+        },
+        {
+          type: "mcq",
+          question: "Comment appelle-t-on la barre d’outils en haut de Word (Onglets + boutons) ?",
+          options: ["Le ruban (Ribbon)", "La barre d’état", "Le volet de navigation", "La zone de dessin"],
+          correct: 0,
+          correction:
+            "Le ruban regroupe les onglets (Accueil, Insertion, etc.) et les commandes. La barre d’état est en bas de la fenêtre."
+        },
+        {
+          type: "mcq",
+          question: "Quel format de fichier est le plus courant pour enregistrer un document Word récent ?",
+          options: [".txt", ".docx", ".xlsx", ".pptx"],
+          correct: 1,
+          correction:
+            "Le format standard actuel est .docx (document Office Open XML). .xlsx est Excel, .pptx est PowerPoint."
+        },
+        {
+          type: "mcq",
+          question: "Pour appliquer le gras à un texte sélectionné, on utilise en général :",
+          options: [
+            "Ctrl + G",
+            "Ctrl + B (ou le bouton G dans le groupe Police)",
+            "Ctrl + S",
+            "F5"
+          ],
+          correct: 1,
+          correction:
+            "Ctrl + B active/désactive le gras. Ctrl + S enregistre le document. Le bouton **G** du groupe Police fait la même chose que le raccourci."
+        },
+        {
+          type: "mcq",
+          question: "La vérification orthographique (soulignements rouges / bleus) permet surtout de :",
+          options: [
+            "Changer la taille de police automatiquement",
+            "Repérer fautes d’orthographe et parfois des erreurs de grammaire",
+            "Insérer des images depuis Internet",
+            "Protéger le document par mot de passe"
+          ],
+          correct: 1,
+          correction:
+            "Les soulignements signalent souvent des fautes (rouge) ou des incohérences grammaticales / style (bleu selon versions et paramètres)."
+        },
+        {
+          type: "mcq",
+          question: "Pour enregistrer une **nouvelle copie** sous un autre nom sans remplacer le fichier d’origine, on utilise :",
+          options: [
+            "Fermer sans enregistrer",
+            "Enregistrer sous",
+            "Imprimer",
+            "Mode Page"
+          ],
+          correct: 1,
+          correction:
+            "**Enregistrer sous** permet de choisir un nouveau nom ou un nouvel emplacement. **Enregistrer** met à jour le fichier déjà ouvert."
+        },
+        {
+          type: "exercise",
+          intro:
+            "**Exercice 1 — Mise en forme** : Vous devez mettre le titre du rapport en taille 18 pt et en gras. Quelle séquence est la plus logique ?",
+          question: "Choisissez la bonne démarche :",
+          options: [
+            "Sélectionner le titre → onglet Accueil → taille 18 → Gras",
+            "Cliquer sur Gras puis taper le titre sans le sélectionner",
+            "Insérer un tableau puis fusionner les cellules",
+            "Utiliser uniquement la molette de la souris"
+          ],
+          correct: 0,
+          correction:
+            "On sélectionne d’abord le texte à modifier, puis on applique la taille et le gras depuis le groupe **Police** (onglet Accueil)."
+        },
+        {
+          type: "exercise",
+          intro:
+            "**Exercice 2 — Sauvegarde** : Vous venez de finir une première version à envoyer au collègue. Vous voulez éviter de perdre le travail si Word se ferme.",
+          question: "Quelle action est la plus adaptée en premier ?",
+          options: [
+            "Enregistrer le document (Ctrl + S)",
+            "Passer en mode Plein écran uniquement",
+            "Augmenter le zoom à 500 %",
+            "Supprimer toutes les images"
+          ],
+          correct: 0,
+          correction:
+            "Enregistrer régulièrement (Ctrl + S) limite la perte de données. Ensuite on peut partager ou faire une copie avec **Enregistrer sous**."
+        },
+        {
+          type: "mcq",
+          question: "Le **mode Page** (affichage) sert principalement à :",
+          options: [
+            "Voir le document comme il sera imprimé (pages, marges)",
+            "Masquer toutes les images du document",
+            "Traduire automatiquement tout le texte",
+            "Convertir le document en PDF sans export"
+          ],
+          correct: 0,
+          correction:
+            "Le mode Page montre les sauts de page et la mise en page réelle. L’export PDF se fait via **Fichier → Enregistrer sous** ou **Exporter** selon la version."
+        },
+        {
+          type: "mcq",
+          question: "Pour insérer une **image** dans le document, l’onglet le plus utilisé est :",
+          options: ["Insertion", "Révisions", "Mise en page", "Références"],
+          correct: 0,
+          correction:
+            "Le groupe **Illustrations** (Images, Formes, etc.) se trouve sous l’onglet **Insertion**."
+        }
+      ];
+
+      var userName = "";
+      var currentIndex = 0;
+      var answers = [];
+
+      var elWelcome = document.getElementById("screenWelcome");
+      var elQuiz = document.getElementById("screenQuiz");
+      var elResults = document.getElementById("screenResults");
+      var inputName = document.getElementById("userName");
+      var btnStart = document.getElementById("btnStart");
+      var btnNext = document.getElementById("btnNext");
+      var btnRestart = document.getElementById("btnRestart");
+      var questionContainer = document.getElementById("questionContainer");
+      var progressFill = document.getElementById("progressFill");
+      var progressText = document.getElementById("progressText");
+
+      function setupLogos() {
+        var imgs = document.querySelectorAll(".brand-logos img");
+        imgs.forEach(function (img) {
+          img.addEventListener("error", function () {
+            var fb = document.createElement("span");
+            fb.className = "logo-fallback";
+            fb.textContent = img.alt + " — placez le fichier dans /logos/";
+            img.replaceWith(fb);
+          });
+        });
+      }
+
+      function stripBold(s) {
+        return s.replace(/\*\*(.+?)\*\*/g, "$1");
+      }
+
+      function renderMarkdownLight(el, html) {
+        el.innerHTML = html
+          .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+          .replace(/\n/g, "<br />");
+      }
+
+      function updateProgress() {
+        var pct = ((currentIndex + 1) / questions.length) * 100;
+        progressFill.style.width = pct + "%";
+        progressText.textContent =
+          "Question " + (currentIndex + 1) + " / " + questions.length;
+      }
+
+      function getSelectedIndex() {
+        var radios = questionContainer.querySelectorAll('input[type="radio"]');
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked) return parseInt(radios[i].value, 10);
+        }
+        return null;
+      }
+
+      function renderQuestion() {
+        var q = questions[currentIndex];
+        updateProgress();
+        var html = "";
+        if (q.type === "exercise" && q.intro) {
+          html += '<div class="exercise-box" id="exIntro"></div>';
+        }
+        html += '<p class="question-title">' + escapeHtml(q.question) + "</p>";
+        html += '<div class="options">';
+        for (var i = 0; i < q.options.length; i++) {
+          html +=
+            '<label class="option" data-idx="' +
+            i +
+            '">' +
+            '<input type="radio" name="q" value="' +
+            i +
+            '" />' +
+            "<span>" +
+            escapeHtml(q.options[i]) +
+            "</span>" +
+            "</label>";
+        }
+        html += "</div>";
+        questionContainer.innerHTML = html;
+        if (q.type === "exercise" && q.intro) {
+          renderMarkdownLight(document.getElementById("exIntro"), q.intro);
+        }
+        var prev = answers[currentIndex];
+        if (prev !== undefined && prev !== null) {
+          var r = questionContainer.querySelector('input[value="' + prev + '"]');
+          if (r) {
+            r.checked = true;
+            r.closest(".option").classList.add("selected");
+          }
+        }
+        bindOptionClicks();
+        btnNext.textContent =
+          currentIndex === questions.length - 1 ? "Voir les résultats" : "Question suivante";
+      }
+
+      function escapeHtml(text) {
+        var d = document.createElement("div");
+        d.textContent = text;
+        return d.innerHTML;
+      }
+
+      function bindOptionClicks() {
+        questionContainer.querySelectorAll(".option").forEach(function (opt) {
+          opt.addEventListener("click", function (e) {
+            if (e.target.tagName === "INPUT") return;
+            var radio = opt.querySelector('input[type="radio"]');
+            if (radio) {
+              radio.checked = true;
+              questionContainer.querySelectorAll(".option").forEach(function (o) {
+                o.classList.remove("selected");
+              });
+              opt.classList.add("selected");
+            }
+          });
+          var radio = opt.querySelector('input[type="radio"]');
+          if (radio) {
+            radio.addEventListener("change", function () {
+              questionContainer.querySelectorAll(".option").forEach(function (o) {
+                o.classList.remove("selected");
+              });
+              opt.classList.add("selected");
+            });
+          }
+        });
+      }
+
+      function showResults() {
+        var correctCount = 0;
+        var details = document.getElementById("detailList");
+        details.innerHTML = "";
+        for (var i = 0; i < questions.length; i++) {
+          var q = questions[i];
+          var userAns = answers[i];
+          var ok = userAns === q.correct;
+          if (ok) correctCount++;
+          var li = document.createElement("li");
+          li.className = "detail-item " + (ok ? "ok" : "bad");
+          var qText = stripBold(q.question);
+          var block =
+            '<div class="q">' +
+            (i + 1) +
+            ". " +
+            escapeHtml(qText) +
+            "</div>";
+          if (userAns === null || userAns === undefined) {
+            block += "<div>Réponse : <em>non répondu</em></div>";
+          } else {
+            block +=
+              "<div>Votre réponse : " +
+              escapeHtml(q.options[userAns]) +
+              "</div>";
+          }
+          block +=
+            "<div>Bonne réponse : " + escapeHtml(q.options[q.correct]) + "</div>";
+          block +=
+            '<div class="correction">' +
+            escapeHtml(stripBold(q.correction)).replace(/\n/g, " ") +
+            "</div>";
+          li.innerHTML = block;
+          details.appendChild(li);
+        }
+        var pct = Math.round((correctCount / questions.length) * 100);
+        document.getElementById("scoreCircle").style.setProperty("--pct", pct);
+        document.getElementById("scoreValue").textContent = pct + "%";
+        var name = userName.trim() || "Participant";
+        var msg =
+          pct >= 80
+            ? "Excellent travail"
+            : pct >= 60
+            ? "Bon niveau — continuez ainsi"
+            : "Des points à renforcer — revoyez le corrigé ci-dessous";
+        document.getElementById("congratsLine").textContent =
+          "Bravo, " + name + " !";
+        document.getElementById("scoreSummary").textContent =
+          msg +
+          " — " +
+          correctCount +
+          " / " +
+          questions.length +
+          " bonnes réponses.";
+        elQuiz.classList.add("hidden");
+        elResults.classList.remove("hidden");
+      }
+
+      btnStart.addEventListener("click", function () {
+        userName = inputName.value.trim();
+        if (!userName) {
+          inputName.focus();
+          inputName.style.borderColor = "var(--error)";
+          setTimeout(function () {
+            inputName.style.borderColor = "";
+          }, 1500);
+          return;
+        }
+        currentIndex = 0;
+        answers = new Array(questions.length).fill(null);
+        elWelcome.classList.add("hidden");
+        elQuiz.classList.remove("hidden");
+        renderQuestion();
+      });
+
+      btnNext.addEventListener("click", function () {
+        var sel = getSelectedIndex();
+        answers[currentIndex] = sel;
+        if (sel === null) {
+          btnNext.style.transform = "translateX(4px)";
+          setTimeout(function () {
+            btnNext.style.transform = "";
+          }, 200);
+          return;
+        }
+        if (currentIndex < questions.length - 1) {
+          currentIndex++;
+          renderQuestion();
+        } else {
+          showResults();
+        }
+      });
+
+      btnRestart.addEventListener("click", function () {
+        elResults.classList.add("hidden");
+        elWelcome.classList.remove("hidden");
+        inputName.value = "";
+        currentIndex = 0;
+        answers = [];
+      });
+
+      setupLogos();
+    })();
+  </script>
+</body>
+</html>
